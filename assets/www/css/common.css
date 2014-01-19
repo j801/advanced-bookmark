@@ -1,0 +1,21 @@
+/* This is a CSS file */
+/*
+
+.ui-listview li p {
+  white-space: normal !important; 
+  overflow-wrap: break-word;
+  padding-left:20px;
+  padding-right:20px;
+}
+.ui-listview li p {
+  white-space: normal !important; 
+  overflow-wrap: break-word;
+  width:300px !important;
+
+}
+*/
+
+.ui-listview li h2 {
+  white-space: normal !important; 
+  overflow-wrap: break-word;
+}

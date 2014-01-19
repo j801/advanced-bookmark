@@ -1,0 +1,209 @@
+<!DOCTYPE html> 
+<html> 
+  <head> 
+    <meta charset="utf-8">
+    <script src="plugins/plugin-loader.js"></script>
+    <script src="js/libs/jquery-2.0.3.min.js"></script>
+
+    <script>
+      /**
+      * jQueryMobileの体感速度を向上させるための記述
+      * 
+      */
+
+      $(document).on("mobileinit", function(){
+        $.mobile.defaultPageTransition = 'none';
+        $.mobile.metaViewportContent = false; 
+      });
+    
+      $(document).on('vclick', 'a', function(e){
+//        e.preventDefault();
+        var link = $(this);
+
+        // footer対応
+        $("nav a").removeClass( $.mobile.activeBtnClass );
+        $("a[name="+ $(this).attr('name') +"]").addClass( $.mobile.activeBtnClass );
+        console.log(link.attr('href'));
+        if (link.attr('rel') == 'external') {
+          window.plugins.childBrowser.showWebPage(link.attr('href'));
+        } else {
+          $.mobile.changePage(link.attr('href'));
+//          jQuery.mobile.changePage('#adb_open');
+
+        }
+      });
+      
+      /* app  */
+      /*
+      $(function() {
+        cb = window.plugins.childBrowser;
+      });
+      */
+    </script>
+    <script src="js/configure.js"></script>
+    <script src="js/libs/jquery.mobile-1.4.0.min.js"></script>
+    <script>
+      // Set virtual screen width size to 640 pixels (横幅640pxに設定)
+      monaca.viewport({width: 480});
+    </script>
+    <link rel="stylesheet" href="plugins/plugin-loader.css" />
+    <link rel="stylesheet" href="css/jquery.mobile-1.4.0.min.css">
+    <link rel="stylesheet" href="css/common.css">
+    <script>
+
+    </script>
+  </head>
+  <body>
+    <div data-role="page" id="adb_home">
+      <div data-role="header" data-position="inline" data-backbtn="false"  data-theme="b">
+        <h1>home</h1>
+        <a href="#adb_home" data-icon="home" class="ui-btn-left ui-icon-home">home</a>
+      </div><!-- /header -->
+      <div data-role="content">  
+        <h2>home page</h2>
+		    <p>sample text and image</p>
+        <img src="images/7f-top1.png" style="width:100%;">
+        <p>description</p>
+	    </div><!-- /content -->
+      <footer data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false"  data-theme="b">
+        <nav data-role="navbar">
+          <ul>
+            <li><a href="#adb_info" name="adb_info">Info</a></li>
+    	      <li><a href="#adb_access" name="adb_access">Access</a></li>
+			      <li><a href="#adb_open" name="adb_open">Open</a></li>
+            <li><a href="#adb_links" name="adb_links">Links</a></li>
+		      </ul>
+	      </nav><!-- /navbar -->
+      </footer><!-- /footer -->
+    </div><!-- /page -->
+    
+    <div data-role="page" id="adb_info">
+      <div data-role="header" data-position="inline" data-backbtn="false"  data-theme="b">
+        <h1>Information</h1>
+        <a href="#adb_home" data-icon="home" class="ui-btn-left ui-icon-home">home</a>
+      </div><!-- /header -->
+      <div data-role="content">  
+          <ul id="feed" data-inset="true" data-role="listview">
+		      </ul>
+      </div><!-- /content -->
+      <footer data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false"  data-theme="b">
+        <nav data-role="navbar">
+          <ul>
+            <li><a href="#adb_info" name="adb_info">Info</a></li>
+            <li><a href="#adb_access" name="adb_access">Access</a></li>
+  		      <li><a href="#adb_open" name="adb_open">Open</a></li>
+            <li><a href="#adb_links" name="adb_links">Links</a></li>
+		      </ul>
+	      </nav><!-- /navbar -->
+      </footer><!-- /footer -->
+    </div><!-- /page -->
+    
+    <div data-role="page" id="adb_access">
+      <div data-role="header" data-position="inline" data-backbtn="false"  data-theme="b">
+      <h1>Access</h1>
+      <a href="#adb_home" data-icon="home" class="ui-btn-left ui-icon-home">home</a>
+      </div><!-- /header -->
+      <div data-role="content">
+        <ul id="openlist" data-inset="true" data-role="listview">
+          <li>
+            <h2>Zip</h2>
+            <p id="zip_data">000-0000</p>
+          </li>
+          <li>
+            <h2>Address</h2>
+            <p id="address_data">hoge prefecture foo city bar cho 2-56</p>
+          </li>
+          <li>
+            <h2>Tel</h2>
+            <p id=""tel_data>080-0000-0000</p>
+          </li>
+          <li>
+            <h2>Stations</h2>
+            <ul id="stations_data">
+            </ul>
+          </li>
+          <li style="padding-left: 1em;">
+            <h2>Map</h2>
+            <p>
+              <img src="" alt="map" id="map_data"><br>
+              <a href="" id="maps_link" target="_blank" rel="external">Open Google Maps </a>
+            </p>
+          </li>
+        </ul>
+
+      
+
+      </div><!-- /content -->
+      <footer data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false"  data-theme="b">
+        <nav data-role="navbar">
+          <ul>
+            <li><a href="#adb_info" name="adb_info">Info</a></li>
+            <li><a href="#adb_access" name="adb_access">Access</a></li>
+  		      <li><a href="#adb_open" name="adb_open">Open</a></li>
+            <li><a href="#adb_links" name="adb_links">Links</a></li>
+		      </ul>
+	      </nav><!-- /navbar -->
+      </footer><!-- /footer -->
+    </div><!-- /page -->
+    <div data-role="page" id="adb_open">
+      <div data-role="header" data-position="inline" data-backbtn="false"  data-theme="b">
+        <h1>Open</h1>
+        <a href="#adb_home" data-icon="home" class="ui-btn-left ui-icon-home">home</a>
+    </div><!-- /header -->
+    <div data-role="content">	
+      <ul id="openlist" data-inset="true" data-role="listview">
+        <li>
+          <h2>Hours</h2>
+          <p id="hours_data">00:00-00:00</p>
+          </li>
+        <li>
+          <h2>Day</h2>
+          <p id="day_data">Every Sunday</p>
+        </li>
+        <li>
+          <h2>Temporary closure</h2>
+          <p id="temporary_closure_data">1/25</p>
+        </li>
+      </ul>
+    
+    </div><!-- /content -->
+    <div data-role="footer" data-id="footer" data-position="fixed"  data-theme="b">
+        <nav data-role="navbar">
+        <ul>
+          <li><a href="#adb_info" name="adb_info">Info</a></li>
+          <li><a href="#adb_access" name="adb_access">Access</a></li>
+		      <li><a href="#adb_open" name="adb_open">Open</a></li>
+          <li><a href="#adb_links" name="adb_links">Links</a></li>
+	      </ul>
+        </nav><!-- /navbar -->
+      </div><!-- /footer -->
+    </div><!-- /page -->
+    
+    <div data-role="page" id="adb_links">
+      <div data-role="header" data-position="inline" data-backbtn="false"  data-theme="b">
+        <h1>Links</h1>
+        <a href="#adb_home" data-icon="home" class="ui-btn-left ui-icon-home">home</a>
+      </div><!-- /header -->
+      <div data-role="content">  
+          <ul id="links" data-inset="true" data-role="listview">
+            
+            <li><a href="http://office7f.com/" target="_blank" rel="external"><h2>Official Web</h2><p>description</p></a></li>
+            <li><a href="http://office7f.com/category/news/" target="_blank" rel="external"><h2>Blog</h2><p>description</p></a></li>
+            <li><a href="https://www.facebook.com/office7F" target="_blank" rel="external"><h2>Facebook</h2><p>description</p></a></li>
+            <li><a href="https://twitter.com/khoshino" target="_blank" rel="external"><h2>Twitter</h2><p>description</p></a></li>
+  	      </ul>
+      </div><!-- /content -->
+      <footer data-role="footer" data-id="footer" data-position="fixed" data-tap-toggle="false"  data-theme="b">
+        <nav data-role="navbar">
+          <ul>
+            <li><a href="#adb_info" name="adb_info">Info</a></li>
+            <li><a href="#adb_access" name="adb_access">Access</a></li>
+  		      <li><a href="#adb_open" name="adb_open">Open</a></li>
+    	      <li><a href="#adb_links" name="adb_links">Links</a></li>
+		      </ul>
+	      </nav><!-- /navbar -->
+      </footer><!-- /footer -->
+    </div><!-- /page -->    
+  </body>
+</html>
+
